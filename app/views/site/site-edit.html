@@ -1,0 +1,72 @@
+﻿<div class="modal-header">
+    <button class="btn btn-link text-muted float-right" ng-click="close()"><span class="fas fa-times" /></button>
+    <h3 class="modal-title"><span ng-if="site.id">Edit</span><span ng-if="!site.id">Add</span> Showcase Site</h3>
+</div>
+
+<div class="modal-body">
+
+    <div ng-show="loading" style="font-size: 60px; text-align: center;">
+        <i class="fas fa-cog fa-spin fa-3x fa-fw"></i>
+    </div>
+
+    <div ng-form="form" id="form" class="form" ng-show="!loading">
+
+        <div class="form-group">
+            <label for="name" class="control-label">Name <span class="text-danger">*</span></label>
+            <input type="text" name="name" class="form-control" ng-model="site.name" required ng-class="{'is-invalid': form.name.$invalid && form.$submitted, 'is-valid': form.name.$valid && form.$submitted}" />
+            <div class="error text-danger" role="alert" ng-messages="form.name.$error" ng-if="form.$submitted" ng-cloak>
+                <div ng-message="required">This field is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="url" class="control-label">URL <span class="text-danger">*</span></label>
+            <input type="url" name="url" class="form-control" ng-model="site.url" required ng-class="{'is-invalid': form.url.$invalid && form.$submitted, 'is-valid': form.url.$valid && form.$submitted}" />
+            <div class="error text-danger" role="alert" ng-messages="form.url.$error" ng-if="form.$submitted" ng-cloak>
+                <div ng-message="required">This field is required</div>
+                <div ng-message="url">This is not a URL</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="description" class="control-label">Description <span class="text-danger">*</span></label>
+            <textarea name="description" class="form-control" ng-model="site.description" required ng-class="{'is-invalid': form.description.$invalid && form.$submitted, 'is-valid': form.description.$valid && form.$submitted}"></textarea>
+            <div class="error text-danger" role="alert" ng-messages="form.description.$error" ng-if="form.$submitted" ng-cloak>
+                <div ng-message="required">This field is required</div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" id="active" class="custom-control-input" name="active" ng-model="site.is_active">
+                <label class="custom-control-label" for="active">Active?</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="thumbnail" class="control-label">Thumbnail</label>
+            <img class="img-fluid border" ng-src="{{site.thumbnail}}" ng-show="site.thumbnail" />
+            <input type="hidden" name="thumbnail" ng-model="site.thumbnail" required />
+            <button type="button" class="btn btn-link btn-sm" ng-click="uploadThumbnail()"><span ng-show="!site.thumbnail">Upload</span><span ng-show="site.thumbnail">Change</span> Thumbnail</button>
+            <div class="error text-danger" role="alert" ng-messages="form.thumbnail.$error" ng-if="form.$submitted" ng-cloak>
+                <div ng-message="required">Thumbnail is required</div>
+            </div>
+        </div>
+
+        <hr />
+
+        <h3>Categories</h3>
+        <div class="custom-control custom-checkbox" ng-repeat="category in categories">
+            <input type="checkbox" class="custom-control-input" id="chkCategory_{{category.id}}" ng-model="category.selected">
+            <label class="custom-control-label" for="chkCategory_{{category.id}}">{{category.name}}</label>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-link pull-right" ng-click="close()"><span ng-show="!form.$dirty">Close</span><span ng-show="form.$dirty">Cancel</span></button>
+    <button class="btn btn-primary" ng-click="saveSite()"><span ng-show="!site.id">Create</span><span ng-show="site.id">Save</span></button>
+</div>
+
+

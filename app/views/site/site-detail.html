@@ -1,0 +1,24 @@
+﻿
+<div ng-show="loading" style="font-size: 60px; text-align: center;">
+    <i class="fas fa-cog fa-spin fa-3x fa-fw"></i>
+</div>
+
+<div ng-show="!loading">
+
+    <div class="card">
+        <div class="card-header">
+            <button class="btn btn-link text-muted float-right" ng-click="close()"><span class="fas fa-times" /></button>
+            
+        </div>
+        <img ng-src="{{site.thumbnail}}" class="card-img-top img-fluid border" alt="{{site.name}}">
+        <div class="card-body">
+            <h4 class="card-title">{{site.name}}</h4>
+            <p class="card-text">{{site.description}}</p>
+            <a class="card-link" target="_blank" ng-href="{{site.url}}">{{site.url}}</a>
+        </div>
+        <div class="card-footer">
+            <strong>Tags:</strong>
+            <div class="badge badge-primary mr-1" ng-repeat="category in site.site_categories">{{category.category_name}}</div>
+        </div>
+    </div>
+</div>

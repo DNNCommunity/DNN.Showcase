@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{20304B35-C633-42D4-B745-34B617FA38F4}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Dnn.Showcase</RootNamespace>
+    <AssemblyName>Dnn.Showcase</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>14.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.7</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dnn.LinqToSqlModelAdapter">
+      <HintPath>..\..\bin\Dnn.LinqToSqlModelAdapter.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetNuke">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\DotNetNuke.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotNetNuke.Web">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\DotNetNuke.Web.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotNetNuke.Web.Client">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\DotNetNuke.Web.Client.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\System.Web.Http.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CategoryList.ascx.cs">
+      <DependentUpon>CategoryList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CategoryList.ascx.designer.cs">
+      <DependentUpon>CategoryList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Extensions.cs" />
+    <Compile Include="Components\Helpers.cs" />
+    <Compile Include="Components\PagedResults.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ThumbnailController.cs" />
+    <Compile Include="Controllers\SiteController.cs" />
+    <Compile Include="DAL\Showcase.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Showcase.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DTOs\Thumbnail.cs" />
+    <Compile Include="DTOs\SiteCategory.cs" />
+    <Compile Include="DTOs\Category.cs" />
+    <Compile Include="DTOs\Site.cs" />
+    <Compile Include="ModuleBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RouteMapper.cs" />
+    <Compile Include="AdminSiteList.ascx.cs">
+      <DependentUpon>AdminSiteList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminSiteList.ascx.designer.cs">
+      <DependentUpon>AdminSiteList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="SchedulerJobs\SiteJob.cs" />
+    <Compile Include="View.ascx.cs">
+      <DependentUpon>View.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View.ascx.designer.cs">
+      <DependentUpon>View.ascx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\controllers\site\site-detail.js" />
+    <Content Include="app\controllers\thumbnail\thumbnail-upload.js" />
+    <Content Include="app\directives\category-list.js" />
+    <Content Include="app\services\thumbnail.js" />
+    <Content Include="app\views\site\site-detail.html" />
+    <Content Include="app\views\thumbnail\thumbnail-upload.html" />
+    <Content Include="CategoryList.ascx" />
+    <Content Include="app\app.js" />
+    <Content Include="app\controllers\category\category-delete.js" />
+    <Content Include="app\controllers\category\category-edit.js" />
+    <Content Include="app\controllers\category\category-list.js" />
+    <Content Include="app\controllers\site\site-list-modal.js" />
+    <Content Include="app\controllers\admin-site-list.js" />
+    <Content Include="app\controllers\view.js" />
+    <Content Include="app\controllers\site\site-delete.js" />
+    <Content Include="app\controllers\site\site-edit.js" />
+    <Content Include="app\controllers\site\site-list.js" />
+    <Content Include="app\directives\modal.js" />
+    <Content Include="app\directives\site-list.js" />
+    <Content Include="app\directives\view.js" />
+    <Content Include="app\services\category.js" />
+    <Content Include="app\services\site.js" />
+    <Content Include="app\views\category\category-delete.html" />
+    <Content Include="app\views\category\category-edit.html" />
+    <Content Include="app\views\category\category-list.html" />
+    <Content Include="app\views\site\site-delete.html" />
+    <Content Include="app\views\site\site-edit.html" />
+    <Content Include="app\views\site\site-list-modal.html" />
+    <Content Include="app\views\site\site-list.html" />
+    <Content Include="app\views\view.html" />
+    <Content Include="Module.css" />
+    <Content Include="plugins\angular-toastr\angular-toastr.min.css" />
+    <Content Include="plugins\angular-toastr\angular-toastr.tpls.min.js" />
+    <Content Include="plugins\slim\slim.angular.js" />
+    <Content Include="plugins\slim\slim.css" />
+    <Content Include="plugins\slim\slim.kickstart.min.js" />
+    <Content Include="plugins\slim\slim.min.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="msbuild\BuildProperties.targets" />
+    <Content Include="msbuild\Project.targets" />
+    <Content Include="Dnn.Showcase.dnn" />
+    <Content Include="DAL\Showcase.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Showcase.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="DAL\Showcase.dbml.layout">
+      <DependentUpon>Showcase.dbml</DependentUpon>
+    </None>
+    <Content Include="AdminSiteList.ascx" />
+    <Content Include="plugins\ui.bootstrap\ui-bootstrap-tpls-3.0.6.min.js" />
+    <Content Include="Scripts\01.00.00.sql" />
+    <Content Include="View.ascx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v16.0\WebApplications\Microsoft.WebApplication.targets" />
+  <Import Project="$(MSBuildProjectDirectory)\MSBuild\Project.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>9595</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://dnn9.localtest.me/desktopmodules/Dnn.Showcase</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost</IISAppRootUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

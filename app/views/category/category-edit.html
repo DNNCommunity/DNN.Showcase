@@ -1,0 +1,30 @@
+﻿<div class="modal-header">
+    <button class="btn btn-link text-muted float-right" ng-click="close()"><span class="fas fa-times" /></button>
+    <h3 class="modal-title"><span ng-if="category.id">Edit</span><span ng-if="!category.id">Add</span> Showcase Category</h3>
+</div>
+
+<div class="modal-body">
+
+    <div ng-show="loading" style="font-size: 60px; text-align: center;">
+        <i class="fas fa-cog fa-spin fa-3x fa-fw"></i>
+    </div>
+
+    <div ng-form="form" id="form" class="form" ng-show="!loading">
+
+        <div class="form-group">
+            <label for="name" class="control-label">Name <span class="text-danger">*</span></label>
+            <input type="text" name="name" class="form-control" ng-model="category.name" required ng-class="{'is-invalid': form.name.$invalid && submitted, 'is-valid': form.name.$valid && submitted}" />
+            <div class="error text-danger" role="alert" ng-messages="form.name.$error" ng-if="submitted" ng-cloak>
+                <div ng-message="required">This field is required</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-link pull-left" ng-click="close()"><span ng-show="!form.$dirty">Close</span><span ng-show="form.$dirty">Cancel</span></button>
+    <button class="btn btn-primary" ng-click="saveCategory()"><span ng-show="!category.id">Create</span><span ng-show="category.id">Save</span></button>
+</div>
+
+

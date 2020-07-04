@@ -1,0 +1,48 @@
+﻿<div ng-show="loading" style="font-size: 60px; text-align: center;">
+    <i class="fas fa-cog fa-spin fa-3x fa-fw"></i>
+</div>
+
+<div ng-show="!loading">
+
+    <div ng-show="user_id>0"><button type="button" class="btn btn-link" ng-click="listShowcases()">Manage Your Showcase Sites</button></div>
+
+
+    <button type="button" class="btn btn-light btn-sm mr-1 mb-2" ng-click="filterCategory()">All</button><button type="button" class="btn btn-light btn-sm mr-1 mb-2" ng-click="filterCategory(category.id)" ng-repeat="category in categories">{{category.name}}</button>
+
+    <div class="grid row">
+        <div class="col-12 col-sm-6 col-lg-3 col-xl-4 mb-4 fadeIn" ng-repeat="site in sites track by $index">
+            <div class="card">
+                <img ng-src="{{site.thumbnail}}" class="card-img-top img-fluid border-bottom" alt="{{site.name}}">
+                <div class="card-body">
+                    <h5 class="card-title text-truncate">
+                        <a href="" class="stretched-link text-muted card-link" ng-click="viewSite(site.id)">{{site.name}}</a>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" ng-show="pagination.total_pages>1">
+        <div class="col col-lg-9">
+            <ul uib-pagination
+                ng-model="pagination.page_number"
+                total-items="pagination.total_items"
+                max-size="pagination.max_size"
+                items-per-page="pagination.items_per_page"
+                boundary-link-numbers="true"
+                ng-change="pageChanged()">
+            </ul>
+        </div>
+        <div class="col col-lg-3">
+            <select class="form-control" ng-model="pagination.items_per_page" ng-change="pageSizeChanged()" ng-options="page_size_option.value as page_size_option.text for page_size_option in page_size_options">
+            </select>
+        </div>
+    </div>
+    
+    <div id="no_results" class="alert alert-info" ng-show="sites.length===0">
+        No showcase sites found for that filter.
+    </div>
+
+    <div class="alert alert-info" ng-show="user_id<0"><i class="fa fa-info-circle fa-2x float-left mr-2"></i>If you would like to add your Dnn website to our showcase, please <a href="/login">log in</a>.</div>
+
+</div>

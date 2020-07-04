@@ -1,0 +1,36 @@
+﻿<div class="modal-header">
+    <button class="btn btn-link text-muted float-right" ng-click="close()"><span class="fas fa-times" /></button>
+    <h3 class="modal-title">Edit Thumbnail</h3>
+</div>
+
+<div class="modal-body">
+
+    <div class="alert alert-info">
+        <i class="fa fa-info-circle fa-3x float-left mr-3"></i>
+        <div>
+            Images will be auto-cropped to a 16:9 aspect ratio.<br />
+            You can modify the cropped area after uploading the image.
+        </div>
+    </div>
+
+
+    <slim id="thumbnail"
+          name="thumbnail"
+          data-ratio="16:9"
+          data-download="false"
+          data-push="true"
+          data-instant-edit="true"
+          data-upload-base64="true"
+          data-service="slim_thumbnail.service"
+          data-did-remove="slim_thumbnail.remove"
+          data-did-init="slim_thumbnail.init">
+        <input type="file" name="slim[]" />
+    </slim>
+
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-link pull-left" ng-click="close()">Close</button>
+</div>
+
+
