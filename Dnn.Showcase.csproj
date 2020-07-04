@@ -46,6 +46,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>.gitignore</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Dnn.LinqToSqlModelAdapter">
       <HintPath>..\..\bin\Dnn.LinqToSqlModelAdapter.dll</HintPath>
@@ -136,6 +139,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".gitignore" />
     <Content Include="app\controllers\site\site-detail.js" />
     <Content Include="app\controllers\thumbnail\thumbnail-upload.js" />
     <Content Include="app\directives\category-list.js" />
