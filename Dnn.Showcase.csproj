@@ -151,7 +151,6 @@
     <Content Include="app\controllers\category\category-delete.js" />
     <Content Include="app\controllers\category\category-edit.js" />
     <Content Include="app\controllers\category\category-list.js" />
-    <Content Include="app\controllers\site\site-list-modal.js" />
     <Content Include="app\controllers\admin-site-list.js" />
     <Content Include="app\controllers\view.js" />
     <Content Include="app\controllers\site\site-delete.js" />
@@ -167,7 +166,6 @@
     <Content Include="app\views\category\category-list.html" />
     <Content Include="app\views\site\site-delete.html" />
     <Content Include="app\views\site\site-edit.html" />
-    <Content Include="app\views\site\site-list-modal.html" />
     <Content Include="app\views\site\site-list.html" />
     <Content Include="app\views\view.html" />
     <Content Include="Module.css" />

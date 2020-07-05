@@ -4,10 +4,13 @@
 
 <div ng-show="!loading">
 
-    <div ng-show="user_id>0"><button type="button" class="btn btn-link" ng-click="listShowcases()">Manage Your Showcase Sites</button></div>
-
-
-    <button type="button" class="btn btn-light btn-sm mr-1 mb-2" ng-click="filterCategory()">All</button><button type="button" class="btn btn-light btn-sm mr-1 mb-2" ng-click="filterCategory(category.id)" ng-repeat="category in categories">{{category.name}}</button>
+    <div>
+        <button type="button" class="btn btn-link" ng-click="listShowcases()" ng-show="user_id>0">Manage Your Showcase Sites</button>
+        <button type="button" class="btn btn-link" ng-click="listAllShowcases()" ng-show="isEditable">Manage All Showcase Sites</button>
+        <button type="button" class="btn btn-link" ng-click="listCategories()" ng-show="isEditable">Manage Showcase Categories</button>
+    </div>
+    
+    <button type="button" class="btn btn-light btn-sm mr-1 mb-2" ng-click="filterCategory()">All</button><button type="button" class="btn btn-light btn-sm mr-1 mb-2" ng-click="filterCategory(category)" ng-repeat="category in categories">{{category.name}}</button>
 
     <div class="grid row">
         <div class="col-12 col-sm-6 col-lg-3 col-xl-4 mb-4 fadeIn" ng-repeat="site in sites track by $index">
@@ -38,7 +41,7 @@
             </select>
         </div>
     </div>
-    
+
     <div id="no_results" class="alert alert-info" ng-show="sites.length===0">
         No showcase sites found for that filter.
     </div>

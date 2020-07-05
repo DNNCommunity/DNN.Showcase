@@ -9,4 +9,5 @@
     var portal_id = <%= PortalId %>;
     var sf = $.ServicesFramework(module_id);
     var apiUrlBase = "<%= ApiUrlBase %>";
+    var navigateUrl = "<%= DotNetNuke.Common.Globals.NavigateURL(TabId) %>"
 </script>

@@ -1,45 +1,56 @@
-﻿<div ng-show="loading" style="font-size: 60px; text-align: center;">
-    <i class="fas fa-cog fa-spin fa-3x fa-fw"></i>
+﻿<div class="modal-header">
+    <button class="btn btn-link text-muted float-right" ng-click="close()"><span class="fas fa-times" /></button>
+    <h3 class="modal-title">Showcase Categories</h3>
 </div>
 
-<div ng-show="!loading">
-
-    <div class="row">
-        <div class="col"><input id="search" name="search" placeholder="Search ..." class="form-control form-control-sm" ng-model="name_search" /></div>
-        <div class="col text-right">
-            <button type="button" class="btn btn-sm btn-primary" ng-click="addCategory()"><i class="fa fa-plus"></i> New Showcase Category</button>
-        </div>
+<div class="modal-body">
+    <div ng-show="loading" style="font-size: 60px; text-align: center;">
+        <i class="fas fa-cog fa-spin fa-3x fa-fw"></i>
     </div>
 
-    <table class="table table-striped">
-        <colgroup>
-            <col />
-            <col style="width: 1%;" />
-        </colgroup>
-        <thead>
-            <tr>
-                <th>Category Name</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="category in categorys | search: 'name':name_search">
-                <td>
-                    <a href="#" class="text-muted" title="View" ng-click="editCategory(category.id)">{{category.name}}</a>
-                </td>
-                <td>
-                    <div class="dropdown">
-                        <a href="#" class="text-muted" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="fas fa-ellipsis-h"></span>
-                        </a>
-                        <div class="dropdown-menu">
-                            <a href="#" class="dropdown-item text-muted" title="View" ng-click="editCategory(category.id)"><i class="fas fa-edit"></i> Edit</a>
-                            <a href="#" class="dropdown-item text-danger" title="Delete" ng-click="deleteCategory(category)"><i class="fas fa-trash"></i> Delete</a>
+    <div ng-show="!loading">
+
+        <div class="row">
+            <div class="col"><input id="search" name="search" placeholder="Search ..." class="form-control form-control-sm" ng-model="name_search" /></div>
+            <div class="col text-right">
+                <button type="button" class="btn btn-sm btn-primary" ng-click="addCategory()"><i class="fa fa-plus"></i> New Showcase Category</button>
+            </div>
+        </div>
+
+        <table class="table table-striped">
+            <colgroup>
+                <col />
+                <col style="width: 1%;" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>Category Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="category in categorys | search: 'name':name_search">
+                    <td>
+                        <a href="#" class="text-muted" title="View" ng-click="editCategory(category.id)">{{category.name}}</a>
+                    </td>
+                    <td>
+                        <div class="dropdown">
+                            <a href="#" class="text-muted" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="fas fa-ellipsis-h"></span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a href="#" class="dropdown-item text-muted" title="View" ng-click="editCategory(category.id)"><i class="fas fa-edit"></i> Edit</a>
+                                <a href="#" class="dropdown-item text-danger" title="Delete" ng-click="deleteCategory(category)"><i class="fas fa-trash"></i> Delete</a>
+                            </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="alert alert-info" ng-show="(categorys | search: 'name':name_search).length==0 ">No categories found.</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="alert alert-info" ng-show="(categorys | search: 'name':name_search).length==0 ">No categories found.</div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-link pull-left" ng-click="close()">Close</button>
 </div>

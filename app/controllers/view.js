@@ -4,7 +4,9 @@
 
     $scope.categories = [];
     $scope.sites = [];
-    $scope.category_id = null;
+    $scope.category = null;
+
+    $scope.isEditable = isEditable;
 
     $scope.page_size_options = [
         { "value": 6, "text": "6 per page" },
@@ -28,12 +30,68 @@
     };
 
     $scope.listShowcases = function () {
-        $uibModal.open({
-            templateUrl: '/DesktopModules/Dnn.Showcase/app/views/site/site-list-modal.html?c=' + new Date().getTime(),
-            controller: 'siteListModalController',
+
+        var modalInstance = $uibModal.open({
+            templateUrl: '/DesktopModules/Dnn.Showcase/app/views/site/site-list.html?c=' + new Date().getTime(),
+            controller: 'siteListController',
+            size: 'lg',
+            backdrop: 'static',
+            resolve: {
+                user_id: function () {
+                    return user_id;
+                }
+            }
+        });
+
+        modalInstance.result.then(
+            function () {
+                $scope.getSites();
+            },
+            function () {
+                $scope.getSites();
+            }
+        );
+    };
+    $scope.listAllShowcases = function () {
+
+        var modalInstance = $uibModal.open({
+            templateUrl: '/DesktopModules/Dnn.Showcase/app/views/site/site-list.html?c=' + new Date().getTime(),
+            controller: 'siteListController',
+            size: 'lg',
+            backdrop: 'static',
+            resolve: {
+                user_id: function () {
+                    return null;
+                }
+            }
+        });
+
+        modalInstance.result.then(
+            function () {
+                $scope.getSites();
+            },
+            function () {
+                $scope.getSites();
+            }
+        );
+    };
+    $scope.listCategories = function () {
+
+        var modalInstance = $uibModal.open({
+            templateUrl: '/DesktopModules/Dnn.Showcase/app/views/category/category-list.html?c=' + new Date().getTime(),
+            controller: 'categoryListController',
             size: 'lg',
             backdrop: 'static'
         });
+
+        modalInstance.result.then(
+            function () {
+                $scope.getCategories();
+            },
+            function () {
+                $scope.getCategories();
+            }
+        );
     };
 
     $scope.getCategories = function () {
@@ -65,7 +123,7 @@
             page_number: $scope.pagination.page_number,
             page_size: $scope.pagination.items_per_page,
 
-            category_id: $scope.category_id,
+            category_id: $scope.category ? $scope.category.id : null,
             user_id: null,
             active: true
         };
@@ -95,9 +153,9 @@
         $scope.getSites();
     };
 
-    $scope.filterCategory = function (category_id) {
-        console.log(category_id);
-        $scope.category_id = category_id;
+    $scope.filterCategory = function (category) {
+
+        $scope.category = category;
         $scope.pagination.page_number = 1;
         $scope.getSites();
     };

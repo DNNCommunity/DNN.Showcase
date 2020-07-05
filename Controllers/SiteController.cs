@@ -67,15 +67,15 @@ namespace Dnn.Showcase
                 //}
                 //else
                 //{
-                    // order
-                    if (ascending)
-                    {
-                        query = query.OrderBy(order_by);
-                    }
-                    else
-                    {
-                        query = query.OrderByDescending(order_by);
-                    }
+                // order
+                if (ascending)
+                {
+                    query = query.OrderBy(order_by);
+                }
+                else
+                {
+                    query = query.OrderByDescending(order_by);
+                }
                 //}
 
                 int total_items = query.Count();
@@ -171,23 +171,22 @@ namespace Dnn.Showcase
                 if (valid)
                 {
                     dc.SubmitChanges();
+                    
+                    string file_path = "/DNN_Showcase/" + site.id.ToString("00000") + ".jpg";
+                    string new_path = PortalSettings.HomeDirectoryMapPath + file_path;
+                    
+                    FileInfo old_thumbnail = new FileInfo(new_path);
+                    if (old_thumbnail.Exists)
+                    {
+                        old_thumbnail.Delete();
+                    }
 
-                    // move temp image
-                    var old_path = System.Web.Hosting.HostingEnvironment.MapPath(site.thumbnail);
-                    FileInfo fi = new FileInfo(old_path);
+                    // move image
+                    var uploaded_mappath = System.Web.Hosting.HostingEnvironment.MapPath(site.thumbnail);
+
+                    FileInfo fi = new FileInfo(uploaded_mappath);
                     if (fi.Exists)
                     {
-                        string file_path = "/DNN_Showcase/" + site.id.ToString("00000") + ".jpg";
-                        string new_path = PortalSettings.HomeDirectoryMapPath + file_path;
-
-                        FileInfo old_file = new FileInfo(new_path);
-                        {
-                            if (old_file.Exists)
-                            {
-                                old_file.Delete();
-                            }
-                        }
-
                         fi.MoveTo(new_path);
                         site.thumbnail = PortalSettings.HomeDirectory + file_path;
                     }
@@ -231,24 +230,26 @@ namespace Dnn.Showcase
                 var valid = ValidateSite(site);
                 if (valid)
                 {
-                    // move temp image
-                    var old_path = System.Web.Hosting.HostingEnvironment.MapPath(site.thumbnail);
-                    FileInfo fi = new FileInfo(old_path);
-                    if (fi.Exists)
+                    if (site.thumbnail != dto.thumbnail) // new thumbnail image
                     {
                         string file_path = "/DNN_Showcase/" + site.id.ToString("00000") + ".jpg";
                         string new_path = PortalSettings.HomeDirectoryMapPath + file_path;
 
-                        FileInfo old_file = new FileInfo(new_path);
+                        FileInfo old_thumbnail = new FileInfo(new_path);
+                        if (old_thumbnail.Exists)
                         {
-                            if (old_file.Exists)
-                            {
-                                old_file.Delete();
-                            }
+                            old_thumbnail.Delete();
                         }
 
-                        fi.MoveTo(new_path);
-                        site.thumbnail = PortalSettings.HomeDirectory + file_path;
+                        // move image
+                        var uploaded_mappath = System.Web.Hosting.HostingEnvironment.MapPath(site.thumbnail);
+
+                        FileInfo fi = new FileInfo(uploaded_mappath);
+                        if (fi.Exists)
+                        {
+                            fi.MoveTo(new_path);
+                            site.thumbnail = PortalSettings.HomeDirectory + file_path;
+                        }
                     }
 
                     dc.SubmitChanges();

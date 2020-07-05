@@ -63,7 +63,6 @@ namespace Dnn.Showcase
             ClientResourceManager.RegisterScript(this.Page, ResolveUrl("/DesktopModules/Dnn.Showcase/app/controllers/site/site-list.js"), 15);
             ClientResourceManager.RegisterScript(this.Page, ResolveUrl("/DesktopModules/Dnn.Showcase/app/controllers/site/site-edit.js"), 15);
             ClientResourceManager.RegisterScript(this.Page, ResolveUrl("/DesktopModules/Dnn.Showcase/app/controllers/site/site-delete.js"), 15);
-            ClientResourceManager.RegisterScript(this.Page, ResolveUrl("/DesktopModules/Dnn.Showcase/app/controllers/site/site-list-modal.js"), 15);
             ClientResourceManager.RegisterScript(this.Page, ResolveUrl("/DesktopModules/Dnn.Showcase/app/controllers/site/site-detail.js"), 15);
         }
     }
