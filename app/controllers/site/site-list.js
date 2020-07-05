@@ -1,15 +1,21 @@
-﻿dnnShowcase.controller('siteListController', ['$rootScope', '$scope', '$q', '$uibModal', 'toastr', 'siteService', function ($rootScope, $scope, $q, $uibModal, toastr, siteService) {
+﻿dnnShowcase.controller('siteListController', ['$scope', '$q', '$uibModal', '$uibModalInstance', 'toastr', 'siteService', 'user_id', function ($scope, $q, $uibModal, $uibModalInstance, toastr, siteService, user_id) {
 
     $scope.loading = true;
+    $scope.close = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
+
+
     $scope.sites = [];
+    $scope.user_id = user_id;
 
     $scope.getSites = function () {
         var deferred = $q.defer();
         $scope.loading = true;
 
         var filter = {};
-        if ($rootScope.user_id) {
-            filter.user_id = $rootScope.user_id;
+        if ($scope.user_id) {
+            filter.user_id = $scope.user_id;
         }
 
         siteService.list(filter).then(

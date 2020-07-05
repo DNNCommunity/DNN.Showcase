@@ -10,4 +10,5 @@
     var portal_id = <%= PortalId %>;
     var sf = $.ServicesFramework(module_id);
     var apiUrlBase = "<%= ApiUrlBase %>";
+    var isEditable = <%= IsEditable.ToString().ToLower() %>;
 </script>

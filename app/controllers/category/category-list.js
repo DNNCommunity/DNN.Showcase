@@ -1,6 +1,11 @@
-﻿dnnShowcase.controller('categoryListController', ['$rootScope', '$scope', '$q', '$uibModal', 'toastr', 'categoryService', function ($rootScope, $scope, $q, $uibModal, toastr, categoryService) {
+﻿dnnShowcase.controller('categoryListController', ['$rootScope', '$scope', '$q', '$uibModal', '$uibModalInstance', 'toastr', 'categoryService', function ($rootScope, $scope, $q, $uibModal, $uibModalInstance, toastr, categoryService) {
 
     $scope.loading = true;
+    $scope.close = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
+
+
     $scope.categorys = [];
 
     $scope.getCategorys = function () {

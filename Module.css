@@ -3,21 +3,8 @@
     vertical-align: middle !important;
 }
 
-/*.table .dropdown-toggle {
-    visibility: hidden;
-}
 
-    .table .dropdown-toggle::after {
-        content: none;
-    }
 
-.table tr:hover .dropdown-toggle {
-    visibility: visible;
-}*/
-
-.tab-pane {
-    padding-top: 10px;
-}
 
 .modal-full {
     position: absolute !important;
@@ -36,13 +23,20 @@
     color: #dc3545;
 }
 
-.modal.fade.in {
-    opacity: 1;
+.editBarFrameContainer.personabar-shown{
+    z-index: 1040 !important;
 }
 
-.modal.fade .modal-dialog {
-    transform: translate(0, 0) !important;
+.modal.fade {
 }
+
+    .modal.fade.in {
+        opacity: 1;
+    }
+
+    .modal.fade .modal-dialog {
+        transform: translate(0, 0) !important;
+    }
 
 .modal-backdrop.fade {
     opacity: 0.5 !important;
